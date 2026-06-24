@@ -221,8 +221,15 @@ const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
 // ============================================================
 //  HELPERS
 // ============================================================
+const USD_TO_INR_RATE = 83.5;
+const INR_FORMATTER = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 2,
+});
+
 function formatPrice(amount) {
-    return '$' + amount.toFixed(2);
+    return INR_FORMATTER.format(amount * USD_TO_INR_RATE);
 }
 
 function getProduct(id) {
