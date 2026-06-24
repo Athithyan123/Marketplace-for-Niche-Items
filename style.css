@@ -304,8 +304,10 @@ input {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: 12px;
     padding-bottom: 30px;
+    align-items: stretch;
 }
 
 /* 3 columns on tablets */
@@ -336,6 +338,8 @@ input {
     position: relative;
     display: flex;
     flex-direction: column;
+    min-height: 100%;
+    height: 100%;
 }
 .product-card:active {
     transform: scale(0.98);
@@ -411,7 +415,8 @@ input {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    justify-content: space-between;
+    gap: 12px;
 }
 .product-card .info .name {
     font-weight: 600;
@@ -434,7 +439,7 @@ input {
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--primary-dark);
-    margin-top: auto;
+    margin-top: 0;
 }
 [data-theme="dark"] .product-card .info .price {
     color: var(--gold);
