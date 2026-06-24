@@ -448,7 +448,7 @@ input {
 }
 
 .product-card .add-cart-btn {
-    margin-top: 8px;
+    margin-top: auto;
     padding: 8px 0;
     border-radius: 50px;
     background: var(--primary);
