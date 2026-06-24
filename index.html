@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RetroVault – Vintage Marketplace</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <i class="fas fa-compact-disc"></i>
+                Retro<span>Vault</span>
+            </a>
+
+            <div class="header-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search vintage treasures..." />
+            </div>
+
+            <div class="header-actions">
+                <button class="header-btn" id="ordersBtn" aria-label="Orders" title="Order History">
+                    <i class="fas fa-receipt"></i>
+                    <span class="badge gold" id="ordersBadge">0</span>
+                </button>
+                <button class="header-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="header-btn" id="wishlistBtn" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlistBadge">0</span>
+                </button>
+                <button class="header-btn" id="cartBtn" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MAIN
+    ============================================================ -->
+    <main class="container">
+
+        <!-- Categories -->
+        <div class="categories" id="categories">
+            <button class="cat-btn active" data-category="all">All</button>
+            <button class="cat-btn" data-category="cameras">Cameras</button>
+            <button class="cat-btn" data-category="watches">Watches</button>
+            <button class="cat-btn" data-category="vinyl">Vinyl</button>
+            <button class="cat-btn" data-category="furniture">Furniture</button>
+            <button class="cat-btn" data-category="jewelry">Jewelry</button>
+            <button class="cat-btn" data-category="gaming">Gaming</button>
+            <button class="cat-btn" data-category="posters">Posters</button>
+            <button class="cat-btn" data-category="books">Books</button>
+        </div>
+
+        <!-- Section Title -->
+        <div class="section-title">
+            <span>Curated Vintage Finds</span>
+            <span class="count" id="productCount">0 items</span>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid"></div>
+
+        <!-- Empty State -->
+        <div class="empty-state hidden" id="emptyState">
+            <i class="fas fa-box-open"></i>
+            <h3>No treasures found</h3>
+            <p>Try adjusting your search or filter.</p>
+        </div>
+
+    </main>
+
+    <!-- ============================================================
+    CART SIDEBAR
+    ============================================================ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-bag heading-icon"></i>Your Cart</h2>
+            <button class="close-btn" id="closeCart" aria-label="Close cart" title="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty.</p>
+                <p class="empty-cart-note">Start adding some vintage gems!</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total</span>
+                <span class="amount" id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    PAYMENT MODAL
+    ============================================================ -->
+    <div class="payment-overlay" id="paymentOverlay">
+        <div class="payment-modal">
+            <button class="close-payment" id="closePayment" aria-label="Close checkout" title="Close checkout"><i class="fas fa-times"></i></button>
+            <h2>💳 Secure Checkout</h2>
+            <p class="sub">Choose your payment method and complete your order.</p>
+
+            <div class="payment-method-group">
+                <label class="method-option">
+                    <input type="radio" name="paymentMethod" value="card" checked />
+                    <span class="method-label"><i class="fas fa-credit-card"></i> Credit / Debit Card</span>
+                </label>
+                <label class="method-option">
+                    <input type="radio" name="paymentMethod" value="cod" />
+                    <span class="method-label"><i class="fas fa-money-bill-wave"></i> Cash on Delivery</span>
+                </label>
+            </div>
+
+            <div id="cardDetails">
+                <div class="order-summary" id="paymentSummary"></div>
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" />
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" />
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cardCvv" placeholder="123" maxlength="4" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" id="cardName" placeholder="John Doe" />
+                </div>
+                <div class="card-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-discover"></i>
+                </div>
+            </div>
+
+            <div id="codInfo" class="cod-info">
+                <i class="fas fa-truck"></i>
+                <p class="cod-info-text">Pay when you receive your vintage treasures.</p>
+                <p class="cod-info-note">No card details needed.</p>
+            </div>
+
+            <button class="pay-btn" id="payBtn">
+                <i class="fas fa-lock"></i> Pay <span id="payAmount">$0.00</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    ORDERS / HISTORY MODAL
+    ============================================================ -->
+    <div class="orders-overlay" id="ordersOverlay">
+        <div class="orders-modal">
+            <div class="header-row">
+                <h2><i class="fas fa-receipt"></i>Order History</h2>
+                <button class="close-orders" id="closeOrders" aria-label="Close orders" title="Close orders"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="ordersList"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    TOAST CONTAINER
+    ============================================================ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
