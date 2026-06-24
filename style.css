@@ -434,7 +434,7 @@ input {
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--primary-dark);
-    margin-top: 2px;
+    margin-top: auto;
 }
 [data-theme="dark"] .product-card .info .price {
     color: var(--gold);
@@ -448,7 +448,7 @@ input {
 }
 
 .product-card .add-cart-btn {
-    margin-top: auto;
+    margin-top: 8px;
     padding: 8px 0;
     border-radius: 50px;
     background: var(--primary);
